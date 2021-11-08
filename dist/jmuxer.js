@@ -922,13 +922,13 @@
             break;
 
           case NALU.SPS:
-            if (!this.track.sps) {
+            //if (!this.track.sps) {
               this.parseSPS(unit.getPayload());
 
               if (!this.remuxer.readyToDecode && this.track.pps && this.track.sps) {
                 this.remuxer.readyToDecode = true;
               }
-            }
+            //}
 
             push = true;
             break;
@@ -2469,7 +2469,7 @@
               units: units,
               keyFrame: keyFrame
             });
-          } else {
+          } else if (frames.length) {
             var last = frames.length - 1;
             frames[last].units = frames[last].units.concat(units);
           }
